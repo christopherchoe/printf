@@ -7,6 +7,11 @@
   */
 int print_char(va_list input)
 {
+	char buf[1];
+
+	buf[0] = va_arg(input, int);
+	write(1, buf, sizeof(char));
+	return (1);
 }
 
 /**
@@ -14,8 +19,17 @@ int print_char(va_list input)
   * @input: argument array that is passed
   * Return: number of characters
   */
-int print_string(va_list)
+int print_string(va_list input)
 {
+	char buf[];
+	int i;
+
+	buf = va_arg(input, char *);
+
+	if (buf == NULL)
+		return (0);
+
+	return (write_buf(buf));
 }
 
 /**
@@ -23,7 +37,15 @@ int print_string(va_list)
   * @input: argument array that is passed
   * Return: number of digits
   */
-int print_decimal(va_list)
+int print_decimal(va_list input)
 {
+	char *buf;
+	int i, temp;
 
+	temp = va_arg(input, int);
+
+	write(1, buf, sizeof(char) * (i - 1));
+
+	return (i - 1);
 }
+
