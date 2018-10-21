@@ -5,6 +5,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+  * struct print - prototype
+  * @format: string that corresponds to conversion specifier
+  * @print_type: pointer to function that will print the specified argument
+  *
+  * Description: this structure defines a prototype for diff. types in c
+  */
 typedef struct print
 {
 	char *format;
