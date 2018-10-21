@@ -41,12 +41,11 @@ char *_itoa(int n)
 
 	d--;
 
-	while (n_copy != 0)
-	{
+	do {
 		*(s + d) = (unsigned char)(n_copy % 10 + '0');
 		n_copy = n_copy / 10;
 		d--;
-	}
+	} while (n_copy != 0);
 	if (d == 0 && n < 0)
 	{
 		*(s + d) = '-';
