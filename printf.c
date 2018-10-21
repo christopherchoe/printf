@@ -14,7 +14,7 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 	const char *copy_format;
 	int type_index;
 	int num_printed;
-	char *null_char = "";
+	/*char *null_char = "";*/
 
 	copy_format = format;
 	num_printed = 0;
@@ -43,7 +43,7 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 			num_printed += print_single_char(++copy_format);
 		copy_format++;
 	}
-	//write(1, null_char, sizeof(char));
+	/*write(1, null_char, sizeof(char));*/
 	va_end(input);
 	return (num_printed);
 }
@@ -65,5 +65,5 @@ int _printf(const char *format, ...)
 	va_list input;
 
 	va_start(input, format);
-	return(print_format(format, input, type_element));
+	return (print_format(format, input, type_element));
 }
