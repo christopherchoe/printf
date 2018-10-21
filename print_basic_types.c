@@ -23,8 +23,9 @@ int print_string(va_list input)
 {
 	char *buf;
 	char temp[] = "(null)";
-	int i;
+	int i, flag;
 
+	flag = 0;
 	buf = va_arg(input, char *);
 	if (buf == NULL)
 	{
@@ -33,11 +34,15 @@ int print_string(va_list input)
 			return (0);
 		for (i = 0; temp[i] != '\0'; i++)
 			*(buf + i) = temp[i];
+		*(buf + i) = temp[i];
+		flag = 1;
 	}
 	i = _strlen(buf);
-	write(1, buf, sizeof(char) * i);
+	if (write(1, buf, sizeof(char) * i) == -1)
+		return (0);
 
-	free(buf);
+	if (flag != 0)
+		free(buf);
 
 	return (i);
 }
@@ -53,6 +58,8 @@ int print_decimal(va_list input)
 	int i, temp;
 
 	temp = va_arg(input, int);
+	if (!temp)
+		temp = 0;
 	i = count_digits(temp);
 	if (temp < 0)
 		i++;

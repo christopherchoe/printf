@@ -14,9 +14,11 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 	const char *copy_format;
 	int type_index;
 	int num_printed;
-	char *null_char = "";
 
-	copy_format = format;
+	if (format != NULL)
+		copy_format = format;
+	else
+		return (-1);
 	num_printed = 0;
 	/* go through the format string */
 	while (*copy_format != '\0')
@@ -40,10 +42,13 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 		else
 			num_printed += print_single_char(copy_format);
 		if (type_element[type_index].format == NULL)
+		{
+			if (*(copy_format + 1) != '%')
+				num_printed += print_single_char(copy_format);
 			num_printed += print_single_char(++copy_format);
+		}
 		copy_format++;
 	}
-	write(1, null_char, sizeof(char));
 	va_end(input);
 	return (num_printed);
 }
@@ -65,5 +70,5 @@ int _printf(const char *format, ...)
 	va_list input;
 
 	va_start(input, format);
-	return(print_format(format, input, type_element));
+	return (print_format(format, input, type_element));
 }
