@@ -27,4 +27,5 @@ int print_single_char(const char *);
 int _strlen(char *);
 char *_itoa(int);
 int count_digits(int);
+unsigned int power(int, int);
 #endif
