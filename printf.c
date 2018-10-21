@@ -1,25 +1,19 @@
 #include "holberton.h"
 
+int _printf(const char *format, ...);
+
 /**
-  * _printf - prints the input string
+  * print_format - prints the input string
   * @format: format string
+  * @input: input array from variable argument list
   * Return: number of printed characters (excluding null byte)
   */
-int _printf(const char *format, ...)
+int print_format(const char *format, va_list input, Conversion_Type *type_elements)
 {
-	type_find type_elements[] = {
-		{"c", print_char},
-		{"s", print_string},
-		{"d", print_decimal},
-		{"i", print_decimal},
-		{NULL, NULL}
-	};
-	va_list input;
-	char *copy_format;
+	const char *copy_format;
 	int type_index;
 	int num_printed;
 
-	va_start(input, format);
 	copy_format = format;
 	num_printed = 0;
 	/* go through the format string */
@@ -48,4 +42,19 @@ int _printf(const char *format, ...)
 		copy_format++;
 	}
 	va_end(input);
+}
+
+int _printf(const char *format, ...)
+{
+	Conversion_Type type_elements[] = {
+		{"c", print_char},
+		{"s", print_string},
+		{"d", print_decimal},
+		{"i", print_decimal},
+		{NULL, NULL}
+	};
+	va_list input;
+	
+	va_start(input, format);
+	return (print_format(format, input, type_elements));
 }

@@ -6,7 +6,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define NULL 0
 /**
   * struct print - prototype
   * @format: string that corresponds to conversion specifier
@@ -24,5 +23,5 @@ int _printf(const char *, ...);
 int print_char(va_list);
 int print_string(va_list);
 int print_decimal(va_list);
-
+int print_single_char(char);
 #endif
