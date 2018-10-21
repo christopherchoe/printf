@@ -43,7 +43,7 @@ char *_itoa(int n)
 
 	while (n_copy != 0)
 	{
-		*(s + d) = n_copy % 10 + '0';
+		*(s + d) = (unsigned char)(n_copy % 10 + '0');
 		n_copy = n_copy / 10;
 		d--;
 	}
@@ -72,4 +72,5 @@ int count_digits(int n)
 
 	return (i);
 }
+
 
