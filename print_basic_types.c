@@ -38,7 +38,8 @@ int print_string(va_list input)
 		flag = 1;
 	}
 	i = _strlen(buf);
-	write(1, buf, sizeof(char) * i);
+	if (write(1, buf, sizeof(char) * i) == -1)
+		return (0);
 
 	if (flag != 0)
 		free(buf);
