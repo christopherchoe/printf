@@ -72,4 +72,18 @@ int count_digits(int n)
 	return (i);
 }
 
+/**
+  * power - calculates the power of two input values
+  * @base: base
+  * @raise: power to raise base to
+  * Return: value of base raised to the power of raise
+  */
+unsigned int power(int base, int raise)
+{
+	unsigned int result;
 
+	result = 1;
+	while (power-- > 0)
+		result *= input;
+	return (result);
+}
