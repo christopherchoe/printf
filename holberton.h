@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define NULL 0
 /**
   * struct print - prototype
   * @format: string that corresponds to conversion specifier
@@ -17,7 +18,7 @@ typedef struct print
 {
 	char *format;
 	int (*print_type)(va_list);
-} type_find;
+} Conversion_Type;
 
 int _printf(const char *, ...);
 int print_char(va_list);

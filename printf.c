@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 
 	va_start(input, format);
 	copy_format = format;
-
+	num_printed = 0;
 	/* go through the format string */
 	while (*copy_format != '\0')
 	{
@@ -32,10 +32,9 @@ int _printf(const char *format, ...)
 			/* iterate through the type_elements array */
 			while (type_elements[type_index].format != NULL)
 			{
-				/* when match is found */
 				if (*(type_elements[type_index].format) == *(copy_format + 1))
 				{
-					type_elements[type_index].print_type(input);
+					num_printed += type_elements[type_index].print_type(input);
 					copy_format++;
 					break;
 				}
@@ -48,4 +47,5 @@ int _printf(const char *format, ...)
 		}
 		copy_format++;
 	}
+	va_end(input);
 }
