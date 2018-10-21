@@ -2,6 +2,7 @@
 #define PRINTF_HEADER
 
 #include <stdarg.h>
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 
