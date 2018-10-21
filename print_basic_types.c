@@ -57,6 +57,8 @@ int print_decimal(va_list input)
 	int i, temp;
 
 	temp = va_arg(input, int);
+	if (!temp)
+		temp = 0;
 	i = count_digits(temp);
 	if (temp < 0)
 		i++;
