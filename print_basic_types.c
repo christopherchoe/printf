@@ -21,7 +21,7 @@ int print_char(va_list input)
   */
 int print_string(va_list input)
 {
-	char buf[];
+/*	char buf[];
 	int i;
 
 	buf = va_arg(input, char *);
@@ -29,7 +29,8 @@ int print_string(va_list input)
 	if (buf == NULL)
 		return (0);
 
-	return (write_buf(buf));
+	return (write_buf(buf)); */
+	return (0);
 }
 
 /**
@@ -49,3 +50,14 @@ int print_decimal(va_list input)
 	return (i - 1);
 }
 
+/**
+  * print_single_char - prints single char to the output
+  * @str: pointer input
+  * Return: 1 because we only print one single char
+  */
+int print_single_char(const char *str)
+{
+	write(1, str, sizeof(char));
+
+	return (1);
+}
