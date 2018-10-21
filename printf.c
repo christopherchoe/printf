@@ -15,7 +15,10 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 	int type_index;
 	int num_printed;
 
-	copy_format = format;
+	if (format != NULL)
+		copy_format = format;
+	else
+		return (-1);
 	num_printed = 0;
 	/* go through the format string */
 	while (*copy_format != '\0')
