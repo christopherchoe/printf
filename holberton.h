@@ -17,7 +17,7 @@ typedef struct print
 {
 	char *format;
 	int (*print_type)(va_list);
-} Conversion_Type;
+} Convert_Type;
 
 int _printf(const char *, ...);
 int print_char(va_list);
