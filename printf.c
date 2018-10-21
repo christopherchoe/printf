@@ -65,5 +65,5 @@ int _printf(const char *format, ...)
 	va_list input;
 
 	va_start(input, format);
-	return(print_format(format, input, type_element));
+	return (print_format(format, input, type_element));
 }
