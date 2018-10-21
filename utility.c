@@ -1,44 +1,34 @@
 #include "holberton.h"
 
-/** 
-  * _atoi - converts a string to an integer
-  * @s: string to be converted
-  * Return: converted integer value
+/**
+  * _strlen - return length of a string
+  * @s: char pointer for string to measure length
+  * Return: length of string, n
   */
-int _atoi(char *s)
+int _strlen(char *s)
 {
-	unsigned int value;
-	int pos_neg;
+	int n, i;
 
-	pos_neg = 1;
-	while ((*s < '0' || *s > '9') && *s != '\0')
-	{
-		if (*s == '-')
-			pos_neg *= -1;
-		s++;
-	}
+	for (i = 0; *(s + i) != '\0'; i++)
+		n++;
 
-	for (value = 0; *s != '\0' && *s >= '0' && *s <= '9'; s++)
-	{
-		value = value * 10 + (*s - '0');
-	}
-	return (value * pos_neg);
+	return (n);
 }
 
-/**
-  * write_buf - writes out a buffer and returns buffer length
-  * @buf: pointer to a buffer with our string to write
-  * Return: how many chars printed
+/** 
+  * _itoa - converts an integer to a string
+  * @n: integer to convert
+  * Return: converted string
   */
-int write_buf(char *buf)
+char *_itoa(int n)
 {
-	int i;
+	int i, digits;
+	char *s;
 
-	for (i = 0; *(buf + i) != '\0'; i++)
-		;
 
-	write(1, buf, sizeof(char) * i);
-	
-	return (i - 1);
+	s = malloc(sizeof(char) * digits);
+	if (s == NULL)
+		return (NULL);
+	return (s);
 }
 
