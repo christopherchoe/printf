@@ -21,16 +21,14 @@ int print_char(va_list input)
   */
 int print_string(va_list input)
 {
-/*	char buf[];
+	char *buf;
 	int i;
 
 	buf = va_arg(input, char *);
-
 	if (buf == NULL)
 		return (0);
-
-	return (write_buf(buf)); */
-	return (0);
+	i = _strlen(buf);
+	write(1, buf, sizeof(char) * i);
 }
 
 /**
@@ -44,10 +42,13 @@ int print_decimal(va_list input)
 	int i, temp;
 
 	temp = va_arg(input, int);
+	i = count_digits(temp);
+	buf = _itoa(temp);
+	if (temp < 0)
+		i++;
+	write(1, buf, sizeof(char) * i);
 
-	write(1, buf, sizeof(char) * (i - 1));
-
-	return (i - 1);
+	return (i);
 }
 
 /**
