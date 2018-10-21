@@ -45,6 +45,7 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 	}
 	write(1, null_char, sizeof(char));
 	va_end(input);
+	return (num_printed);
 }
 
 /**

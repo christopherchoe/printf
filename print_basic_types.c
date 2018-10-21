@@ -29,6 +29,7 @@ int print_string(va_list input)
 		return (0);
 	i = _strlen(buf);
 	write(1, buf, sizeof(char) * i);
+	return (i);
 }
 
 /**
@@ -43,9 +44,9 @@ int print_decimal(va_list input)
 
 	temp = va_arg(input, int);
 	i = count_digits(temp);
-	buf = _itoa(temp);
 	if (temp < 0)
 		i++;
+	buf = _itoa(temp);
 	write(1, buf, sizeof(char) * i);
 
 	return (i);

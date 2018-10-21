@@ -23,7 +23,7 @@ int _strlen(char *s)
   */
 char *_itoa(int n)
 {
-	int i, d;
+	int d;
 	char *s;
 	unsigned int n_copy;
 
