@@ -14,7 +14,6 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 	const char *copy_format;
 	int type_index;
 	int num_printed;
-	/*char *null_char = "";*/
 
 	copy_format = format;
 	num_printed = 0;
@@ -40,10 +39,12 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 		else
 			num_printed += print_single_char(copy_format);
 		if (type_element[type_index].format == NULL)
-			num_printed += print_single_char(++copy_format);
+		{
+			num_printed += print_single_char(copy_format++);
+			num_printed += print_single_char(copy_format);
+		}
 		copy_format++;
 	}
-	/*write(1, null_char, sizeof(char));*/
 	va_end(input);
 	return (num_printed);
 }
