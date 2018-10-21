@@ -34,6 +34,7 @@ int print_string(va_list input)
 			return (0);
 		for (i = 0; temp[i] != '\0'; i++)
 			*(buf + i) = temp[i];
+		*(buf + i) = temp[i];
 		flag = 1;
 	}
 	i = _strlen(buf);
