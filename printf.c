@@ -38,10 +38,9 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 			}
 		}
 		else
-		{
-			/* print non conversion specifiers to standard output */
 			num_printed += print_single_char(copy_format);
-		}
+		if (type_element[type_index].format == NULL)
+			num_printed += print_single_char(++copy_format);
 		copy_format++;
 	}
 	write(1, null_char, sizeof(char));
