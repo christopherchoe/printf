@@ -43,7 +43,7 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 			num_printed += print_single_char(++copy_format);
 		copy_format++;
 	}
-	write(1, null_char, sizeof(char));
+	//write(1, null_char, sizeof(char));
 	va_end(input);
 	return (num_printed);
 }
