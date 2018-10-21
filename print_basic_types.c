@@ -22,6 +22,7 @@ int print_char(va_list input)
 int print_string(va_list input)
 {
 	char *buf;
+	char temp[] = "(null)";
 	int i;
 
 	buf = va_arg(input, char *);
@@ -30,10 +31,14 @@ int print_string(va_list input)
 		buf = malloc(sizeof(char) * 7);
 		if (buf == NULL)
 			return (0);
-		buf = "(null)";
+		for (i = 0; temp[i] != '\0'; i++)
+			*(buf + i) = temp[i];
 	}
 	i = _strlen(buf);
 	write(1, buf, sizeof(char) * i);
+
+	free(buf);
+
 	return (i);
 }
 
@@ -53,6 +58,8 @@ int print_decimal(va_list input)
 		i++;
 	buf = _itoa(temp);
 	write(1, buf, sizeof(char) * i);
+
+	free(buf);
 
 	return (i);
 }
