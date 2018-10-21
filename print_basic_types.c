@@ -26,7 +26,12 @@ int print_string(va_list input)
 
 	buf = va_arg(input, char *);
 	if (buf == NULL)
-		return (0);
+	{
+		buf = malloc(sizeof(char) * 7);
+		if (buf == NULL)
+			return (0);
+		buf = "(null)";
+	}
 	i = _strlen(buf);
 	write(1, buf, sizeof(char) * i);
 	return (i);
