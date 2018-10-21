@@ -13,7 +13,7 @@ int print_format(const char *format, va_list input, Conversion_Type *type_elemen
 	const char *copy_format;
 	int type_index;
 	int num_printed;
-
+	char *null_char = "";
 	copy_format = format;
 	num_printed = 0;
 	/* go through the format string */
@@ -38,9 +38,11 @@ int print_format(const char *format, va_list input, Conversion_Type *type_elemen
 		else
 		{
 			/* print non conversion specifiers to standard output */
+			num_printed += print_single_char(copy_format);
 		}
 		copy_format++;
 	}
+	write(1, null_char, sizeof(char));
 	va_end(input);
 }
 
