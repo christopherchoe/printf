@@ -9,7 +9,7 @@ int _strlen(char *s)
 {
 	int n, i;
 
-	n = 0; 
+	n = 0;
 	for (i = 0; *(s + i) != '\0'; i++)
 		n++;
 
@@ -29,7 +29,7 @@ char *_itoa(int n)
 
 	d = count_digits(n);
 	if (n < 0)
-	{	
+	{
 		d++;
 		n_copy = n * -1;
 	}
