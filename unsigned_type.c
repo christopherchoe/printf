@@ -42,11 +42,11 @@ int print_binary(va_list input)
   * print_unsigned - prints unsigned int
   * @input: input from variable argument list
   * Return: number of characters printed
+  *
+  * int print_unsigned(va_list input)
+  * {
+  *	return (0);
   */
-int print_unsigned(va_list input)
-{
-	return (0);
-}
 
 /**
   * print_hex_cap - prints an unsigned hexadecimal number
