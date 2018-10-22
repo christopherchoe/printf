@@ -9,11 +9,12 @@ int _printf(const char *format, ...);
   * @type_element: pointer to an array of structures of type Convert type
   * Return: number of printed characters (excluding null byte)
   */
-int print_format(const char *format, va_list input, Convert_Type *type_element)
+int print_format(const char *format, /*char *buf,*/ va_list input, Convert_Type *type_element)
 {
 	const char *copy_format;
 	int type_index;
 	int num_print;
+	/* to move */
 	char *buf;
 
 	buf = malloc(sizeof(char));
@@ -22,6 +23,7 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 	buf = buffer_init(buf);
 	if (buf == NULL)
 		return (0);
+	/* end of move */
 	if (format != NULL)
 		copy_format = format;
 	else
@@ -83,5 +85,6 @@ int _printf(const char *format, ...)
 	va_list input;
 
 	va_start(input, format);
-	return (print_format(format, input, type_element));
+	return (print_format(format, buf, input, type_element));
 }
+
