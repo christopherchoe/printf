@@ -29,26 +29,19 @@ int print_string(va_list input, char *buf, int n)
 {
 	char *str;
 	char temp[] = "(null)";
-	int i, flag, num_copied;
+	int i, num_copied;
 
 	num_copied = 0;
-	flag = 0;
 	str = va_arg(input, char *);
 	if (str == NULL)
 	{
-		str = malloc(sizeof(char) * 7);
-		if (buf == NULL)
-			return (0);
 		for (i = 0; temp[i] != '\0'; i++)
 			*(buf + i) = temp[i];
 		*(buf + i) = temp[i];
-		flag = 1;
+		str = temp;
 	}
 	i = _strlen(str);
 	num_copied = buffer_copy(buf, str, n);
-
-	if (flag != 0)
-		free(str);
 
 	return (num_copied);
 }

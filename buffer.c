@@ -43,12 +43,10 @@ int buffer_copy(char *buf, char *to_copy, int n)
 			buf = buffer_write(buf, 1023);
 			n = 0;
 		}
-		/* this was before the if prior*/
 		*(buf + n) = *to_copy++;
 		n++;
 		count++;
 	}
-	/* add flag for buffer reset, to account the int return of printf*/
 	return (count);
 }
 

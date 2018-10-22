@@ -61,7 +61,6 @@ int print_format(const char *format, /*char *buf,*/ va_list input, Convert_Type 
 		copy_format++;
 	}
 	*(buf + buffer_over(num_print)) = '\0';
-	printf("this is the index at write: %d", buffer_over(num_print));
 	buffer_write(buf, buffer_over(num_print));
 	va_end(input);
 
@@ -85,6 +84,6 @@ int _printf(const char *format, ...)
 	va_list input;
 
 	va_start(input, format);
-	return (print_format(format, buf, input, type_element));
+	return (print_format(format,/* buf,*/ input, type_element));
 }
 
