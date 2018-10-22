@@ -19,12 +19,19 @@ typedef struct print
 	int (*print_type)(va_list);
 } Convert_Type;
 
+/* printing functions */
 int _printf(const char *, ...);
 int print_char(va_list);
 int print_string(va_list);
 int print_decimal(va_list);
 int print_single_char(const char *);
+int print_unsigned(va_list);
 int print_binary(va_list);
+int print_hex_low(va_list);
+int print_hex_cap(va_list);
+int print_octal(va_list);
+
+/* utility functions */
 int _strlen(char *);
 char *_itoa(int);
 int count_digits(int);

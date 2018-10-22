@@ -66,6 +66,10 @@ int _printf(const char *format, ...)
 		{"d", print_decimal},
 		{"i", print_decimal},
 		{"b", print_binary},
+		{"u", print_unsigned},
+		{"o", print_octal},
+		{"x", print_hex_low},
+		{"X", print_hex_cap},
 		{NULL, NULL}
 	};
 	va_list input;
