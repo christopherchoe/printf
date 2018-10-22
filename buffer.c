@@ -41,6 +41,7 @@ int buffer_copy(char *buf, char *to_copy, int n)
 			n = 0;
 		}
 	}
+	/* add flag for buffer reset, to account the int return of printf*/
 	return (n);
 }
 
