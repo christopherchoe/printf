@@ -25,6 +25,7 @@ int print_char(va_list);
 int print_string(va_list);
 int print_decimal(va_list);
 int print_single_char(const char *);
+
 int print_unsigned(va_list);
 int print_binary(va_list);
 int print_hex_low(va_list);

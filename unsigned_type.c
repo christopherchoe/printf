@@ -188,7 +188,7 @@ int print_octal(va_list input)
 			multiple++;
 		}
 	/*	input_to_buf[0] = *(hex_values + (--multiple)); */
-		num_copied += buffer_copy(buf, input_to_buf, n + index);
+	/*	num_copied += buffer_copy(buf, input_to_buf, n + index); */
 		write(1, (octal_values + (--multiple)), sizeof(char));
 		result -= multiple * power(base, x - index);
 	}
