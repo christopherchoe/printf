@@ -24,6 +24,7 @@ int print_char(va_list);
 int print_string(va_list);
 int print_decimal(va_list);
 int print_single_char(const char *);
+int print_binary(va_list);
 int _strlen(char *);
 char *_itoa(int);
 int count_digits(int);
