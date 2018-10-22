@@ -45,7 +45,7 @@ int print_binary(va_list input)
   */
 int print_unsigned(va_list input)
 {
-
+	return (0);
 }
 
 /**
