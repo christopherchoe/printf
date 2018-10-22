@@ -15,11 +15,16 @@ int print_binary(va_list input)
 
 	copy_input = va_arg(input, unsigned int);
 	power_x = 0;
-	result = copy_input - power(2, power_x);
-	while (result >= power(2, power_x + 1) - power(2, power_x))
+	if (copy_input == NULL || copy_input == 0)
+		copy_input = 0;
+	else
 	{
-		power_x++;
 		result = copy_input - power(2, power_x);
+		while (result >= power(2, power_x + 1) - power(2, power_x))
+		{
+			power_x++;
+			result = copy_input - power(2, power_x);
+		}
 	}
 	result = copy_input;
 	for (index = 0; index <= power_x; index++)
