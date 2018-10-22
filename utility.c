@@ -83,7 +83,7 @@ unsigned int power(int base, int raise)
 	unsigned int result;
 
 	result = 1;
-	while (power-- > 0)
-		result *= input;
+	while (raise-- > 0)
+		result *= base;
 	return (result);
 }
