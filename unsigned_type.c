@@ -73,7 +73,7 @@ int print_hex_cap(va_list input)
 
 	copy_input = va_arg(input, int);
 	x = 0;
-	if (copy_input > base)
+	if (copy_input >= base)
 	{
 		result = copy_input - power(base, x);
 		while (result >= power(base, x + 1) - power(base, x))
@@ -122,7 +122,7 @@ int print_hex_low(va_list input)
 
 	copy_input = va_arg(input, unsigned int);
 	x = 0;
-	if (copy_input > base)
+	if (copy_input >= base)
 	{
 		result = copy_input - power(base, x);
 		while (result >= power(base, x + 1) - power(base, x))
@@ -170,7 +170,7 @@ int print_octal(va_list input)
 
 	copy_input = va_arg(input, unsigned int);
 	x = 0;
-	if (copy_input > base)
+	if (copy_input >= base)
 	{
 		result = copy_input - power(base, x);
 		while (result >= power(base, x + 1) - power(base, x))
