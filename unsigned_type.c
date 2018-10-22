@@ -53,6 +53,7 @@ int print_unsigned(va_list input)
 	storage = _u_itoa(result);
 	num_char = _strlen(storage);
 	write(1, storage, sizeof(char) * num_char);
+	free(storage);
 	return (num_char);
 }
 
