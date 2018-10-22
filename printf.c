@@ -13,13 +13,23 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 {
 	const char *copy_format;
 	int type_index;
-	int num_printed;
+	int number_format;
+	int n;
+	char *buf;
 
+	buf = malloc(sizeof(char));
+	if (buf == NULL)
+		return (0);
+	buf = buffer_init(buf);
+	if (buf == NULL)
+		return (0);
 	if (format != NULL)
 		copy_format = format;
 	else
+	{
 		return (-1);
-	num_printed = 0;
+	}
+	number_format = 0;
 	/* go through the format string */
 	while (*copy_format != '\0')
 	{
@@ -32,7 +42,7 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 			{
 				if (*(type_element[type_index].format) == *(copy_format + 1))
 				{
-					num_printed += type_element[type_index].print_type(input);
+					number_format = type_element[type_index].print_type(input, buf, number_format);
 					copy_format++;
 					break;
 				}
@@ -40,17 +50,21 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 			}
 		}
 		else
-			num_printed += print_single_char(copy_format);
+			number_format = print_single_char(copy_format, buf, number_format);
 		if (type_element[type_index].format == NULL)
 		{
 			if (*(copy_format + 1) != '%')
-				num_printed += print_single_char(copy_format);
-			num_printed += print_single_char(++copy_format);
+				number_format = print_single_char(copy_format, buf, number_format);
+			number_format = print_single_char(++copy_format, buf, number_format);
 		}
 		copy_format++;
 	}
+	*(buf + number_format) = '\0';
+	n = _strlen(buf);
+	buffer_write(buf, n);
 	va_end(input);
-	return (num_printed);
+
+	return (n);
 }
 
 /**

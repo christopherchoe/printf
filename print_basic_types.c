@@ -1,17 +1,24 @@
 #include "holberton.h"
 
 /**
-  * print_char - prints the single character
+  * print_char - adds the single character to buffer
   * @input: argument array that is passed
   * Return: 1
   */
-int print_char(va_list input)
+int print_char(va_list input, char *buf, int n)
 {
-	char buf[1];
+	char *ch;
 
-	buf[0] = va_arg(input, int);
-	write(1, buf, sizeof(char));
-	return (1);
+	ch = malloc(sizeof(char) * 2);
+	if (ch == NULL)
+		return (0);
+	*ch = va_arg(input, int);
+	*(ch + 1) = '\0';
+
+	n = buffer_copy(buf, ch, n);
+
+	free(ch);
+	return (n);
 }
 
 /**
@@ -19,17 +26,17 @@ int print_char(va_list input)
   * @input: argument array that is passed
   * Return: number of characters
   */
-int print_string(va_list input)
+int print_string(va_list input, char *buf, int n)
 {
-	char *buf;
+	char *str;
 	char temp[] = "(null)";
 	int i, flag;
 
 	flag = 0;
-	buf = va_arg(input, char *);
-	if (buf == NULL)
+	str = va_arg(input, char *);
+	if (str == NULL)
 	{
-		buf = malloc(sizeof(char) * 7);
+		str = malloc(sizeof(char) * 7);
 		if (buf == NULL)
 			return (0);
 		for (i = 0; temp[i] != '\0'; i++)
@@ -37,14 +44,13 @@ int print_string(va_list input)
 		*(buf + i) = temp[i];
 		flag = 1;
 	}
-	i = _strlen(buf);
-	if (write(1, buf, sizeof(char) * i) == -1)
-		return (0);
+	i = _strlen(str);
+	n = buffer_copy(buf, str, n);
 
 	if (flag != 0)
-		free(buf);
+		free(str);
 
-	return (i);
+	return (n);
 }
 
 /**
@@ -52,9 +58,9 @@ int print_string(va_list input)
   * @input: argument array that is passed
   * Return: number of digits
   */
-int print_decimal(va_list input)
+int print_decimal(va_list input, char *buf, int n)
 {
-	char *buf;
+	char *c;
 	int i, temp;
 
 	temp = va_arg(input, int);
@@ -63,12 +69,12 @@ int print_decimal(va_list input)
 	i = count_digits(temp);
 	if (temp < 0)
 		i++;
-	buf = _itoa(temp);
-	write(1, buf, sizeof(char) * i);
+	c = _itoa(temp);
+	n = buffer_copy(buf, c, n);
 
-	free(buf);
+	free(c);
 
-	return (i);
+	return (n);
 }
 
 /**
@@ -76,9 +82,18 @@ int print_decimal(va_list input)
   * @str: pointer input
   * Return: 1 because we only print one single char
   */
-int print_single_char(const char *str)
+int print_single_char(const char *str, char *buf, int n)
 {
-	write(1, str, sizeof(char));
+	char *temp;
 
-	return (1);
+	temp = malloc(sizeof(char) * 2);
+	if (temp == NULL)
+		return (0);
+
+	*temp = *str;
+	*(temp + 1) = '\0';
+	n = buffer_copy(buf, temp, n);
+
+	free(temp);
+	return (n);
 }

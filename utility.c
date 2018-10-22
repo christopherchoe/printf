@@ -87,3 +87,4 @@ unsigned int power(int base, int raise)
 		result *= base;
 	return (result);
 }
+
