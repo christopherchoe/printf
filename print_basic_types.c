@@ -3,6 +3,8 @@
 /**
   * print_char - adds the single character to buffer
   * @input: argument array that is passed
+  * @buf: buffer to copy char to
+  * @n: index of buffer to copy to
   * Return: 1
   */
 int print_char(va_list input, char *buf, int n)
@@ -15,7 +17,7 @@ int print_char(va_list input, char *buf, int n)
 	*ch = va_arg(input, int);
 	*(ch + 1) = '\0';
 
-	n = buffer_copy(buf, ch, n);
+	n = (buffer_copy(buf, ch, n));
 
 	free(ch);
 	return (n);
@@ -24,7 +26,9 @@ int print_char(va_list input, char *buf, int n)
 /**
   * print_string - prints the string
   * @input: argument array that is passed
-  * Return: number of characters
+  * @buf: buffer to copy to
+  * @n: index to start copying to buffer
+  * Return: number of characters copied
   */
 int print_string(va_list input, char *buf, int n)
 {
@@ -56,7 +60,9 @@ int print_string(va_list input, char *buf, int n)
 /**
   * print_decimal - print decimal integer
   * @input: argument array that is passed
-  * Return: number of digits
+  * @buf: buffer to copy to
+  * @n: index to start copying to buffer
+  * Return: number of digits copied
   */
 int print_decimal(va_list input, char *buf, int n)
 {
@@ -72,7 +78,8 @@ int print_decimal(va_list input, char *buf, int n)
 	c = _itoa(temp);
 	n = buffer_copy(buf, c, n);
 
-	free(c);
+	if (c != NULL)
+		free(c);
 
 	return (n);
 }
@@ -80,7 +87,9 @@ int print_decimal(va_list input, char *buf, int n)
 /**
   * print_single_char - prints single char to the output
   * @str: pointer input
-  * Return: 1 because we only print one single char
+  * @buf: buffer to copy to
+  * @n: index to start buffer copy
+  * Return: 1 because we only copy one single char
   */
 int print_single_char(const char *str, char *buf, int n)
 {
@@ -94,6 +103,8 @@ int print_single_char(const char *str, char *buf, int n)
 	*(temp + 1) = '\0';
 	n = buffer_copy(buf, temp, n);
 
-	free(temp);
+	if (temp != NULL)
+		free(temp);
 	return (n);
 }
+

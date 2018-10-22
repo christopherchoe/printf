@@ -35,11 +35,11 @@ char *_itoa(int n)
 	}
 	else
 		n_copy = n;
-	s = malloc(sizeof(char) * d);
+	s = malloc(sizeof(char) * (d + 1));
 	if (s == NULL)
 		return (NULL);
 
-	d--;
+	*(s + d--) = '\0';
 
 	do {
 		*(s + d) = (unsigned char)(n_copy % 10 + '0');

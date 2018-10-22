@@ -1,8 +1,8 @@
 #include "holberton.h"
 
 /**
-  * buffer_init - free previous buffer and initializesagain
-  * @buf: buffer to free if filled or initialize
+  * buffer_init - free previous buffer and initializes again
+  * @buf: buffer to free if filled, then initialize
   * Return: pointer to buffer
   */
 char *buffer_init(char *buf)
@@ -27,14 +27,20 @@ char *buffer_init(char *buf)
   * buffer_copy - adds to buffer and writes if full, reinitializing
   * @buf: buffer to copy to
   * @to_copy: string to copy to buffer
-  * Return: new index for buffer
+  * @n: index to start copying to
+  * Return: count of printed chars
   */
 int buffer_copy(char *buf, char *to_copy, int n)
 {
+	int count = 0;
+
+	if (to_copy == NULL)
+		return (count);
 	while (*to_copy)
 	{
 		*(buf + n) = *to_copy++;
 		n++;
+		count++;
 		if (*(buf + n) == '\0')
 		{
 			buf = buffer_write(buf, 1023);
@@ -42,14 +48,14 @@ int buffer_copy(char *buf, char *to_copy, int n)
 		}
 	}
 	/* add flag for buffer reset, to account the int return of printf*/
-	return (n);
+	return (count);
 }
 
 /**
   * buffer_write - writes out buffer
   * @buf: buffer to write
   * @n: how many bytes to write
-  * Return: newly initialized buffer
+  * Return: newly initialized or freed buffer based on overflow condition
   */
 char *buffer_write(char *buf, int n)
 {
@@ -59,5 +65,19 @@ char *buffer_write(char *buf, int n)
 	else
 		free(buf);
 	return (buf);
+}
+
+/**
+  * buffer_over - checks if overflowed return and creates new index
+  * @n: count returned
+  * Return: unaltered if below 1023, new index if above
+  */
+int buffer_over(int n)
+{
+	if (n < 1024)
+		return (n);
+	while (n < 1024)
+		n = n - 1024;
+	return (n);
 }
 

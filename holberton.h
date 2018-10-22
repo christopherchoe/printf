@@ -31,4 +31,5 @@ unsigned int power(int, int);
 char *buffer_init(char *);
 int buffer_copy(char *, char *, int);
 char *buffer_write(char *, int);
+int buffer_over(int);
 #endif
