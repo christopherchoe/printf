@@ -75,3 +75,29 @@ int _printf(const char *format, ...)
 	va_start(input, format);
 	return (print_format(format, input, type_element));
 }
+
+/**
+  * check_null_str - checks if any of the inputs for %s is NULL
+  * @format: format string
+  * @input: input from variable argument list
+  * Return: 1 if there is a NULL input
+  */
+int check_null_str(const char *format, va_list input)
+{
+	va_list copy_input;
+
+	va_copy(copy_input, input);
+	while (*format != '\0')
+	{
+		if (*format == '%')
+		{
+			if (*(++format) == 's')
+			{
+				if (va_arg(copy_input, char *) == NULL)
+					return (1);
+			}
+		}
+		format++;
+	}
+	return (0);
+}

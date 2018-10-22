@@ -108,12 +108,12 @@ int count_digits(int n)
   * @raise: power to raise base to
   * Return: value of base raised to the power of raise
   */
-unsigned int power(int base, int raise)
+unsigned long int power(unsigned int base, unsigned int raise)
 {
-	unsigned int result;
+	unsigned long int result;
 
 	result = 1;
-	while (raise-- > 0)
+	while (raise-- != 0)
 		result *= base;
 	return (result);
 }

@@ -19,14 +19,17 @@ typedef struct print
 	int (*print_type)(va_list);
 } Convert_Type;
 
-/* printing functions */
+/* printf functions */
 int _printf(const char *, ...);
 int print_format(const char *, va_list, Convert_Type *);
+int check_null_str(const char *, va_list);
+/* printf basic types */
 int print_char(va_list);
 int print_string(va_list);
 int print_decimal(va_list);
 int print_single_char(const char *);
 
+/* printing advanced types */
 int print_unsigned(va_list);
 int print_binary(va_list);
 int print_hex_low(va_list);
@@ -38,5 +41,5 @@ int _strlen(char *);
 char *_itoa(int);
 char *_u_itoa(unsigned int);
 int count_digits(int);
-unsigned int power(int, int);
+unsigned long int power(unsigned int, unsigned int);
 #endif

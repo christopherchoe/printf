@@ -71,7 +71,7 @@ int print_hex_cap(va_list input)
 	int multiple;
 	/* char *input_to_buf; */
 
-	copy_input = va_arg(input, unsigned int);
+	copy_input = va_arg(input, int);
 	x = 0;
 	if (copy_input > base)
 	{
@@ -83,6 +83,7 @@ int print_hex_cap(va_list input)
 		}
 	}
 	result = copy_input;
+
 	/*
 	 * input_to_buf = malloc(sizeof(char) * 2);
 	 * if (input_to_buf == NULL)
@@ -162,7 +163,7 @@ int print_octal(va_list input)
 	unsigned int copy_input;
 	unsigned int result;
 	int index, x;
-	char *octal_values = "012345678";
+	char *octal_values = "01234567";
 	unsigned int base = 8;
 	int multiple;
 	/*char *input_to_buf;*/
