@@ -9,18 +9,13 @@
   */
 int print_char(va_list input, char *buf, int n)
 {
-	char *ch;
+	char ch;
 
-	ch = malloc(sizeof(char) * 2);
-	if (ch == NULL)
-		return (0);
-	*ch = va_arg(input, int);
-	*(ch + 1) = '\0';
+	ch = va_arg(input, int);
 
-	n = (buffer_copy(buf, ch, n));
+	*(buf + n) = ch;
 
-	free(ch);
-	return (n);
+	return (1);
 }
 
 /**
@@ -34,8 +29,9 @@ int print_string(va_list input, char *buf, int n)
 {
 	char *str;
 	char temp[] = "(null)";
-	int i, flag;
+	int i, flag, num_copied;
 
+	num_copied = 0;
 	flag = 0;
 	str = va_arg(input, char *);
 	if (str == NULL)
@@ -49,12 +45,12 @@ int print_string(va_list input, char *buf, int n)
 		flag = 1;
 	}
 	i = _strlen(str);
-	n = buffer_copy(buf, str, n);
+	num_copied = buffer_copy(buf, str, n);
 
 	if (flag != 0)
 		free(str);
 
-	return (n);
+	return (num_copied);
 }
 
 /**
@@ -67,8 +63,9 @@ int print_string(va_list input, char *buf, int n)
 int print_decimal(va_list input, char *buf, int n)
 {
 	char *c;
-	int i, temp;
+	int i, temp, num_copied;
 
+	num_copied = 0;
 	temp = va_arg(input, int);
 	if (!temp)
 		temp = 0;
@@ -76,12 +73,12 @@ int print_decimal(va_list input, char *buf, int n)
 	if (temp < 0)
 		i++;
 	c = _itoa(temp);
-	n = buffer_copy(buf, c, n);
+	num_copied = buffer_copy(buf, c, n);
 
 	if (c != NULL)
 		free(c);
 
-	return (n);
+	return (num_copied);
 }
 
 /**
@@ -93,18 +90,11 @@ int print_decimal(va_list input, char *buf, int n)
   */
 int print_single_char(const char *str, char *buf, int n)
 {
-	char *temp;
+	char temp;
 
-	temp = malloc(sizeof(char) * 2);
-	if (temp == NULL)
-		return (0);
+	temp = *str;
+	*(buf + n) = temp;
 
-	*temp = *str;
-	*(temp + 1) = '\0';
-	n = buffer_copy(buf, temp, n);
-
-	if (temp != NULL)
-		free(temp);
-	return (n);
+	return (1);
 }
 

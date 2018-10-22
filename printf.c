@@ -13,7 +13,7 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 {
 	const char *copy_format;
 	int type_index;
-	int number_format;
+	int num_print;
 	char *buf;
 
 	buf = malloc(sizeof(char));
@@ -28,7 +28,7 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 	{
 		return (-1);
 	}
-	number_format = 0;
+	num_print = 0;
 	/* go through the format string */
 	while (*copy_format != '\0')
 	{
@@ -41,7 +41,7 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 			{
 				if (*(type_element[type_index].format) == *(copy_format + 1))
 				{
-					number_format += type_element[type_index].print_type(input, buf, buffer_over(number_format));
+					num_print += type_element[type_index].print_type(input, buf, buffer_over(num_print));
 					copy_format++;
 					break;
 				}
@@ -49,20 +49,21 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 			}
 		}
 		else
-			number_format += print_single_char(copy_format, buf, buffer_over(number_format));
+			num_print += print_single_char(copy_format, buf, buffer_over(num_print));
 		if (type_element[type_index].format == NULL)
 		{
 			if (*(copy_format + 1) != '%')
-				number_format += print_single_char(copy_format, buf, buffer_over(number_format));
-			number_format += print_single_char(++copy_format, buf, buffer_over(number_format));
+				num_print += print_single_char(copy_format, buf, buffer_over(num_print));
+			num_print += print_single_char(++copy_format, buf, buffer_over(num_print));
 		}
 		copy_format++;
 	}
-	*(buf + buffer_over(number_format)) = '\0';
-	buffer_write(buf, buffer_over(number_format));
+	*(buf + buffer_over(num_print)) = '\0';
+	printf("this is the index at write: %d", buffer_over(num_print));
+	buffer_write(buf, buffer_over(num_print));
 	va_end(input);
 
-	return (number_format);
+	return (num_print);
 }
 
 /**
