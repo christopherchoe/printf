@@ -36,6 +36,7 @@ int print_octal(va_list);
 /* utility functions */
 int _strlen(char *);
 char *_itoa(int);
+char *_u_itoa(unsigned int);
 int count_digits(int);
 unsigned int power(int, int);
 #endif

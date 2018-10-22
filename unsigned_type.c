@@ -45,8 +45,15 @@ int print_binary(va_list input)
   */
 int print_unsigned(va_list input)
 {
-	(void)input;
-	return (0);
+	unsigned int result;
+	char *storage;
+	int num_char;
+
+	result = va_arg(input, unsigned int);
+	storage = _u_itoa(result);
+	num_char = _strlen(storage);
+	write(1, storage, sizeof(char) * num_char);
+	return (num_char);
 }
 
 /**

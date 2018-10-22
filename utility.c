@@ -55,6 +55,36 @@ char *_itoa(int n)
 }
 
 /**
+  * _u_itoa - converts unsigned int to string
+  * @n: number
+  * Return: string to converted string
+  */
+char *_u_itoa(unsigned int n)
+{
+	int num_digits, index;
+	unsigned int n_copy;
+	char *storage;
+
+	n_copy = n;
+	num_digits = 0;
+	/* count number of digits */
+	do {
+		n_copy /= 10;
+		num_digits++;
+	} while (n_copy != 0);
+	storage = malloc(sizeof(char) * (num_digits + 1));
+	if (storage == NULL)
+		return (NULL);
+	n_copy = n;
+	storage[num_digits] = '\0';
+	for (index = 0; index < num_digits; index++)
+	{
+		storage[index] = (n_copy / power(10, (num_digits - index - 1))) + '0';
+		n_copy %= power(10, num_digits - index - 1);
+	}
+	return (storage);
+}
+/**
   * count_digits - counts number of digits
   * @n: numeric argument to count digits of
   * Return: number of digits
