@@ -45,6 +45,7 @@ int print_binary(va_list input)
   */
 int print_unsigned(va_list input)
 {
+	(void)input;
 	return (0);
 }
 
@@ -59,8 +60,8 @@ int print_hex_cap(va_list input)
 	unsigned int result;
 	int index, x;
 	char *hex_print = "0123456789ABCDEF";
-	int base = 16;
-	int multiple, num_copied;
+	unsigned int base = 16;
+	int multiple;
 	/* char *input_to_buf; */
 
 	copy_input = va_arg(input, unsigned int);
@@ -75,7 +76,6 @@ int print_hex_cap(va_list input)
 		}
 	}
 	result = copy_input;
-	num_copied = 0;
 	/*
 	 * input_to_buf = malloc(sizeof(char) * 2);
 	 * if (input_to_buf == NULL)
@@ -108,8 +108,8 @@ int print_hex_low(va_list input)
 	unsigned int result;
 	int index, x;
 	char *hex_print = "0123456789abcdef";
-	int base = 16;
-	int multiple, num_copied;
+	unsigned int base = 16;
+	int multiple;
 	/*char *input_to_buf;*/
 
 	copy_input = va_arg(input, unsigned int);
@@ -124,7 +124,6 @@ int print_hex_low(va_list input)
 		}
 	}
 	result = copy_input;
-	num_copied = 0;
 	/*
 	 * input_to_buf = malloc(sizeof(char) * 2);
 	 * if (input_to_buf == NULL)
@@ -157,8 +156,8 @@ int print_octal(va_list input)
 	unsigned int result;
 	int index, x;
 	char *octal_values = "012345678";
-	int base = 8;
-	int multiple, num_copied;
+	unsigned int base = 8;
+	int multiple;
 	/*char *input_to_buf;*/
 
 	copy_input = va_arg(input, unsigned int);
@@ -173,7 +172,6 @@ int print_octal(va_list input)
 		}
 	}
 	result = copy_input;
-	num_copied = 0;
 	/*
 	 * input_to_buf = malloc(sizeof(char) * 2);
 	 * if (input_to_buf == NULL)
