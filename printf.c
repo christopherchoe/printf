@@ -65,6 +65,7 @@ int _printf(const char *format, ...)
 		{"s", print_string},
 		{"d", print_decimal},
 		{"i", print_decimal},
+		{"b", print_binary},
 		{NULL, NULL}
 	};
 	va_list input;
