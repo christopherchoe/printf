@@ -21,6 +21,7 @@ typedef struct print
 
 /* printing functions */
 int _printf(const char *, ...);
+int print_format(const char *, va_list, Convert_Type *);
 int print_char(va_list);
 int print_string(va_list);
 int print_decimal(va_list);

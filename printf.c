@@ -1,7 +1,5 @@
 #include "holberton.h"
 
-int _printf(const char *format, ...);
-
 /**
   * print_format - prints the input string
   * @format: format string
