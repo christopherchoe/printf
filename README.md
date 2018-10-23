@@ -14,6 +14,14 @@ Made as a project for Holberton School
 * [Susan Su](https://twitter.com/sususayshello)
 * [Christopher Choe](https://twitter.com/chchchoe)
 
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Description](#description)
+- [Features](#features)
+- [Built With](#built-with)
+- [Acknowledgments](#acknowledgments)
+
 ## Introduction
 
 A custom made printf function built in C using only the write, malloc, free, va_start, va_copy, va__arg, and va_end non custom functions.
@@ -26,7 +34,7 @@ int \_printf(const char \*format, ...);
 
 This is the prototype for our custom printf and will return the number of chararacters printed or in the case of a percentage sign at the end of a string, -1. A percentage sign and a specific conversion specifier in our format string will indicate a special print within the format string when matched with a corresponding provided argument.
 
-Functionality includes:
+## Features
 
 * %c : with a char argument, prints that char
 
