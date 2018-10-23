@@ -36,6 +36,12 @@ int print_hex_low(va_list);
 int print_hex_cap(va_list);
 int print_octal(va_list);
 
+/* printing manipulated strings */
+int print_rev_str(va_list);
+int print_rot13(va_list);
+char *rev_string(char *);
+char *rot13(char *);
+
 /* utility functions */
 int _strlen(char *);
 char *_itoa(int);
