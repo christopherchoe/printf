@@ -43,11 +43,12 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 			num_printed += print_single_char(copy_format);
 		if (type_element[type_index].format == NULL)
 		{
-			if (*(copy_format + 1) != '%')
+			if (*(copy_format + 1) != '%' && *(copy_format + 1) != '\0')
 				num_printed += print_single_char(copy_format);
 			num_printed += print_single_char(++copy_format);
 		}
-		copy_format++;
+		if (*(copy_format) != '\0')
+			copy_format++;
 	}
 	va_end(input);
 	return (num_printed);
