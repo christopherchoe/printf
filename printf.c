@@ -1,7 +1,5 @@
 #include "holberton.h"
 
-int _printf(const char *format, ...);
-
 /**
   * print_format - prints the input string
   * @format: format string
@@ -66,10 +64,41 @@ int _printf(const char *format, ...)
 		{"s", print_string},
 		{"d", print_decimal},
 		{"i", print_decimal},
+		{"b", print_binary},
+		{"u", print_unsigned},
+		{"o", print_octal},
+		{"x", print_hex_low},
+		{"X", print_hex_cap},
 		{NULL, NULL}
 	};
 	va_list input;
 
 	va_start(input, format);
 	return (print_format(format, input, type_element));
+}
+
+/**
+  * check_null_str - checks if any of the inputs for %s is NULL
+  * @format: format string
+  * @input: input from variable argument list
+  * Return: 1 if there is a NULL input
+  */
+int check_null_str(const char *format, va_list input)
+{
+	va_list copy_input;
+
+	va_copy(copy_input, input);
+	while (*format != '\0')
+	{
+		if (*format == '%')
+		{
+			if (*(++format) == 's')
+			{
+				if (va_arg(copy_input, char *) == NULL)
+					return (1);
+			}
+		}
+		format++;
+	}
+	return (0);
 }
