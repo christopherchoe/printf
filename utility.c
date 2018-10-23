@@ -59,7 +59,7 @@ char *_itoa(int n)
   * @n: number
   * Return: string to converted string
   */
-char *_u_itoa(unsigned int n)
+char *_u_itoa(unsigned long int n)
 {
 	unsigned int num_digits, index;
 	unsigned long int n_copy;
