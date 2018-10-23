@@ -44,7 +44,7 @@ int print_unprint(va_list input)
 	free(str);
 	free(buf);
 	free(hex);
-	return (i);
+	return (m);
 }
 
 /**
