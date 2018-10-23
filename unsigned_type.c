@@ -5,7 +5,7 @@
   * @input: input from argument list
   * Return: number of characters printed
   */
-int print_binary(va_list input)
+int print_binary(va_list input, char *buf, int n)
 {
 	unsigned int copy_input;
 	unsigned int result;
@@ -43,7 +43,7 @@ int print_binary(va_list input)
   * @input: input from variable argument list
   * Return: number of characters printed
   */
-int print_unsigned(va_list input)
+int print_unsigned(va_list input, char *buf, int n)
 {
 	unsigned int result;
 	char *storage;
@@ -66,7 +66,7 @@ int print_unsigned(va_list input)
   * @input: input from variable argument list
   * Return: number of characters printed
   */
-int print_hex_cap(va_list input)
+int print_hex_cap(va_list input, char *buf, int n)
 {
 	unsigned long int copy_input;
 	unsigned long int result;
@@ -115,7 +115,7 @@ int print_hex_cap(va_list input)
   * @input: input from variable argument list
   * Return: number of characters printed
   */
-int print_hex_low(va_list input)
+int print_hex_low(va_list input, char *buf, int n)
 {
 	unsigned long int copy_input;
 	unsigned long int result;
@@ -163,7 +163,7 @@ int print_hex_low(va_list input)
   * @input: input from variable argument list
   * Return: number of characters printed
   */
-int print_octal(va_list input)
+int print_octal(va_list input, char *buf, int n)
 {
 	unsigned long int copy_input;
 	unsigned long int result;
@@ -205,3 +205,4 @@ int print_octal(va_list input)
 	}
 	return (x + 1);
 }
+

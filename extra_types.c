@@ -5,7 +5,7 @@
   * @input: input from variable argument list
   * Return: number of characters printed
   */
-int print_address(va_list input)
+int print_address(va_list input, char *buf, int n)
 {
 	void *storage;
 	unsigned long int address, result;
