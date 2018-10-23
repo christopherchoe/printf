@@ -45,9 +45,9 @@ int print_binary(va_list input)
   */
 int print_unsigned(va_list input)
 {
-	unsigned long int result;
+	unsigned int result;
 	char *storage;
-	int num_char;
+	unsigned int num_char;
 
 	result = va_arg(input, unsigned int);
 	storage = _u_itoa(result);
@@ -66,10 +66,10 @@ int print_hex_cap(va_list input)
 {
 	unsigned long int copy_input;
 	unsigned long int result;
-	int index, x;
+	unsigned long int index, x;
 	char *hex_print = "0123456789ABCDEF";
-	unsigned int base = 16;
-	int multiple;
+	unsigned long int base = 16;
+	unsigned long int  multiple;
 	/* char *input_to_buf; */
 
 	copy_input = va_arg(input, unsigned int);
@@ -115,10 +115,10 @@ int print_hex_low(va_list input)
 {
 	unsigned long int copy_input;
 	unsigned long int result;
-	int index, x;
+	unsigned long int index, x;
 	char *hex_print = "0123456789abcdef";
-	unsigned int base = 16;
-	int multiple;
+	unsigned long int base = 16;
+	unsigned long int multiple;
 	/*char *input_to_buf;*/
 
 	copy_input = va_arg(input, unsigned int);
@@ -163,10 +163,10 @@ int print_octal(va_list input)
 {
 	unsigned long int copy_input;
 	unsigned long int result;
-	int index, x;
+	unsigned long int index, x;
 	char *octal_values = "01234567";
-	unsigned int base = 8;
-	int multiple;
+	unsigned long int base = 8;
+	unsigned long int multiple;
 	/*char *input_to_buf;*/
 
 	copy_input = va_arg(input, unsigned int);
