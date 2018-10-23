@@ -10,13 +10,12 @@
 int print_format(const char *format, va_list input, Convert_Type *type_element)
 {
 	const char *copy_format;
-	int type_index, num_printed;
+	int type_index, num_printed = 0;
 
 	if (format != NULL)
 		copy_format = format;
 	else
 		return (-1);
-	num_printed = 0;
 	/* go through the format string */
 	while (*copy_format != '\0')
 	{
@@ -24,7 +23,6 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 		/* check for conversion specifier */
 		if (*copy_format == '%')
 		{
-			/* iterate through the type_elements array */
 			while (type_element[type_index].format != NULL)
 			{
 				if (*(type_element[type_index].format) == *(copy_format + 1))
