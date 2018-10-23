@@ -1,6 +1,53 @@
 #include "holberton.h"
 
 /**
+  * print_unprint - prints unprinted characters as part of string
+  * @str: string to convert
+  * Return: number of characters printed
+  */
+int print_unprint(va_list input)
+{
+	char *buf;
+	char *str;
+	char *hex;
+	int m, i, k = 0;
+
+	buf = va_arg(input, char *);
+	str = string_malloc(buf);
+	if (str == NULL)
+		return (0);
+	k = unprint_strlen(buf);
+	buf = malloc(sizeof(char) * (k + 1));
+	if (buf == NULL)
+		return (0);
+/*	hex = malloc(sizeof(char) * 3);
+	if (hex == NULL)
+		return (0);*/
+	for (i = m = 0; *(str + i) != '\0'; i++)
+	{
+		if ((*(str + i) > 0 && *(str + i) < 32) || *(str + i) >= 127)
+		{
+			hex = unprint_hex(*(str + i));
+			*(buf + m++) = '\\';
+			*(buf + m++) = 'x';
+			*(buf + m++) = *hex;
+			*(buf + m++) = *(hex + 1);
+		}
+		else
+		{
+			*(buf + m) = *(str + i);
+			m++;
+		}
+	}
+	if (write(1, buf, sizeof(char) * m) == -1)
+		return (0);
+	free(str);
+	free(buf);
+	free(hex);
+	return (i);
+}
+
+/**
  * rot13 - encodes a string with rot13
  * @str: string to be encoded
  * Return: pointer to beginning of string

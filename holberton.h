@@ -40,6 +40,10 @@ int print_octal(va_list);
 /* printing manipulated strings */
 int print_rev_str(va_list);
 int print_rot13(va_list);
+int print_unprint(va_list);
+char *unprint_hex(int);
+int unprint_strlen(char *);
+char *string_malloc(char *);
 char *rev_string(char *);
 char *rot13(char *);
 

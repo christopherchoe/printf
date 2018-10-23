@@ -71,6 +71,7 @@ int _printf(const char *format, ...)
 		{"r", print_rev_str},
 		{"R", print_rot13},
 		{"p", print_address},
+		{"S", print_unprint},
 		{NULL, NULL}
 	};
 	va_list input;

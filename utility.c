@@ -79,7 +79,7 @@ char *_u_itoa(unsigned long int n)
 	/*
 	 * for (index = 0; index < num_digits; index++)
 	 * {
-	 * 	storage[index] = (n_copy / power(10, (num_digits - index - 1))) + '0';
+	 *	storage[index] = (n_copy / power(10, (num_digits - index - 1))) + '0';
 	 *	n_copy %= power(10, num_digits - index - 1);
 	 * }
 	 * storage[index] = '\0';
