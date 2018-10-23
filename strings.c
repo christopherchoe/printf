@@ -2,7 +2,7 @@
 
 /**
   * print_unprint - prints unprinted characters as part of string
-  * @str: string to convert
+  * @input: Argument passed to convert
   * Return: number of characters printed
   */
 int print_unprint(va_list input)
