@@ -76,11 +76,12 @@ int print_rev_str(va_list input)
 	}
 	else
 	{
-		str = malloc(sizeof(char) * i);
+		str = malloc(sizeof(char) * (i + 1));
 		if (str == NULL)
 			return (0);
 		for (k = 0; k < i; k++)
 			*(str + k) = *(buf + k);
+		*(str + k) = *(buf + k);
 		buf = rev_string(str);
 	}
 
@@ -121,11 +122,12 @@ int print_rot13(va_list input)
 	}
 	else
 	{
-		str = malloc(sizeof(char) * i);
+		str = malloc(sizeof(char) * (i + 1));
 		if (str == NULL)
 			return (0);
 		for (k = 0; k < i; k++)
 			*(str + k) = *(buf + k);
+		*(str + k) = *(buf + k);
 		buf = rot13(str);
 	}
 
