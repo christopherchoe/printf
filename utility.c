@@ -61,8 +61,8 @@ char *_itoa(int n)
   */
 char *_u_itoa(unsigned int n)
 {
-	int num_digits, index;
-	unsigned int n_copy;
+	unsigned int num_digits, index;
+	unsigned long int n_copy;
 	char *storage;
 
 	n_copy = n;
