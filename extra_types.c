@@ -18,8 +18,8 @@ int print_address(va_list input)
 	storage = va_arg(input, void *);
 	if (storage == NULL)
 	{
-		write(1, invalid, sizeof(char) * _strlen(invalid));
-		return (_strlen(invalid));
+		write(1, invalid, sizeof(char) * 5);
+		return (5);
 	}
 	address = (unsigned long)storage;
 	/* convert pointer address to long hexadecimal format */
@@ -29,7 +29,7 @@ int print_address(va_list input)
 		x++;
 	} while (address > result);
 	result = address;
-	write(1, start, sizeof(char) * _strlen(start));
+	write(1, start, sizeof(char) * 2);
 	for (index = 0; index < x; index++)
 	{
 		for (multiple = 0; multiple <= base; multiple++)
