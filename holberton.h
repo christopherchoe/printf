@@ -45,7 +45,7 @@ char *rot13(char *);
 /* utility functions */
 int _strlen(char *);
 char *_itoa(int);
-char *_u_itoa(unsigned int);
+char *_u_itoa(unsigned long int);
 int count_digits(int);
-unsigned long int power(unsigned int, unsigned int);
+unsigned long int power(unsigned long int, unsigned long int);
 #endif

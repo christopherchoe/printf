@@ -59,7 +59,7 @@ char *_itoa(int n)
   * @n: number
   * Return: string to converted string
   */
-char *_u_itoa(unsigned int n)
+char *_u_itoa(unsigned long int n)
 {
 	unsigned int num_digits, index;
 	unsigned long int n_copy;
@@ -76,12 +76,12 @@ char *_u_itoa(unsigned int n)
 	if (storage == NULL)
 		return (NULL);
 	n_copy = n;
-	storage[num_digits] = '\0';
 	for (index = 0; index < num_digits; index++)
 	{
 		storage[index] = (n_copy / power(10, (num_digits - index - 1))) + '0';
 		n_copy %= power(10, num_digits - index - 1);
 	}
+	storage[index] = '\0';
 	return (storage);
 }
 /**
@@ -108,7 +108,7 @@ int count_digits(int n)
   * @raise: power to raise base to
   * Return: value of base raised to the power of raise
   */
-unsigned long int power(unsigned int base, unsigned int raise)
+unsigned long int power(unsigned long int base, unsigned long int raise)
 {
 	unsigned long int result;
 
