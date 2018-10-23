@@ -61,7 +61,7 @@ char *_itoa(int n)
   */
 char *_u_itoa(unsigned long int n)
 {
-	unsigned int num_digits, index;
+	int num_digits, index;
 	unsigned long int n_copy;
 	char *storage;
 
@@ -76,12 +76,20 @@ char *_u_itoa(unsigned long int n)
 	if (storage == NULL)
 		return (NULL);
 	n_copy = n;
-	for (index = 0; index < num_digits; index++)
+	/*
+	 * for (index = 0; index < num_digits; index++)
+	 * {
+	 * 	storage[index] = (n_copy / power(10, (num_digits - index - 1))) + '0';
+	 *	n_copy %= power(10, num_digits - index - 1);
+	 * }
+	 * storage[index] = '\0';
+	 */
+	storage[num_digits] = '\0';
+	for (index = (num_digits - 1); index >= 0; index--)
 	{
-		storage[index] = (n_copy / power(10, (num_digits - index - 1))) + '0';
-		n_copy %= power(10, num_digits - index - 1);
+		storage[index] = (n_copy % 10) + '0';
+		n_copy /= 10;
 	}
-	storage[index] = '\0';
 	return (storage);
 }
 /**
