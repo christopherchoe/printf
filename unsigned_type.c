@@ -47,11 +47,15 @@ int print_unsigned(va_list input)
 {
 	unsigned int result;
 	char *storage;
-	unsigned int num_char;
+	int num_char;
 
 	result = va_arg(input, unsigned int);
 	storage = _u_itoa(result);
-	num_char = _strlen(storage);
+	if (storage == NULL)
+		return (0);
+	num_char = 0;
+	while (storage[num_char] != '\0')
+		num_char++;
 	write(1, storage, sizeof(char) * num_char);
 	free(storage);
 	return (num_char);

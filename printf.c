@@ -102,5 +102,6 @@ int check_null_str(const char *format, va_list input)
 		}
 		format++;
 	}
+	va_end(copy_input);
 	return (0);
 }
