@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
-  * print_address: prints the address of the input
+  * print_address - prints the address of the input
   * @input: input from variable argument list
   * Return: number of characters printed
   */
@@ -9,8 +9,8 @@ int print_address(va_list input)
 {
 	void *storage;
 	unsigned long int address, result, x, index;
-	unsigned int multiple;
-	unsigned int base = 16;
+	unsigned long int multiple;
+	unsigned long int base = 16;
 	char *hex_values = "0123456789abcdef";
 	char *start = "0x";
 	char *invalid = "(nil)";
@@ -29,7 +29,7 @@ int print_address(va_list input)
 		x++;
 	} while (address > result);
 	result = address;
-	write(1, start, sizeof(char) * 2);
+	write(1, start, sizeof(char) * _strlen(start));
 	for (index = 0; index < x; index++)
 	{
 		for (multiple = 0; multiple <= base; multiple++)
