@@ -8,7 +8,8 @@
 int print_address(va_list input)
 {
 	void *storage;
-	unsigned long int address, result, x, index;
+	unsigned long int address, result;
+	int x, index;
 	unsigned long int multiple;
 	unsigned long int base = 16;
 	char *hex_values = "0123456789abcdef";
