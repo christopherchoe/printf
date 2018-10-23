@@ -20,9 +20,6 @@ int print_unprint(va_list input)
 	buf = malloc(sizeof(char) * (k + 1));
 	if (buf == NULL)
 		return (0);
-/*	hex = malloc(sizeof(char) * 3);
-	if (hex == NULL)
-		return (0);*/
 	for (i = m = 0; *(str + i) != '\0'; i++)
 	{
 		if ((*(str + i) > 0 && *(str + i) < 32) || *(str + i) >= 127)
