@@ -70,6 +70,7 @@ int _printf(const char *format, ...)
 		{"X", print_hex_cap},
 		{"r", print_rev_str},
 		{"R", print_rot13},
+		{"p", print_address},
 		{NULL, NULL}
 	};
 	va_list input;

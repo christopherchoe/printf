@@ -23,6 +23,7 @@ typedef struct print
 int _printf(const char *, ...);
 int print_format(const char *, va_list, Convert_Type *);
 int check_null_str(const char *, va_list);
+
 /* printf basic types */
 int print_char(va_list);
 int print_string(va_list);
@@ -41,6 +42,9 @@ int print_rev_str(va_list);
 int print_rot13(va_list);
 char *rev_string(char *);
 char *rot13(char *);
+
+/* printing extra types */
+int print_address(va_list);
 
 /* utility functions */
 int _strlen(char *);
