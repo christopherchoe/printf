@@ -46,13 +46,13 @@ Functionality includes:
 
 * %S : with a string argument, prints any unprintable characters as \x and the 2 digit hexadecimal representation of the character
 
-* %u : with an unsigned integer argument, prints the unsigned integer
+* %u : with an integer argument, prints the unsigned integer
 
-* %o : with an unsigned integer argument, prints the octal notation
+* %o : with an integer argument, prints the octal notation
 
-* %x : with an unsigned integer argument, prints the hexadecimal notation with lowercase letters
+* %x : with an integer argument, prints the hexadecimal notation with lowercase letters
 
-* %X : with an unsigned integer argument, prints the hexadecimal notation with uppercase letters
+* %X : with an integer argument, prints the hexadecimal notation with uppercase letters
 
 * %b : with an integer argument, prints the binary conversion of that integer
 
