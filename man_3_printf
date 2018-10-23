@@ -65,7 +65,7 @@ The following characters determine the conversion and format of the arguments th
 .RS 3
 .B %c
 .RS 3
-Accepts an argument type of int. Prints a single character to the standard output.
+Accepts an argument type of int. Converts to an unsigned char type and prints a single character to the standard output.
 .LP
 .RE
 .B %s
