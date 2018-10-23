@@ -68,6 +68,8 @@ int _printf(const char *format, ...)
 		{"o", print_octal},
 		{"x", print_hex_low},
 		{"X", print_hex_cap},
+		{"r", print_rev_str},
+		{"R", print_rot13},
 		{NULL, NULL}
 	};
 	va_list input;
