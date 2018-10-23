@@ -7,12 +7,9 @@
   */
 int print_char(va_list input)
 {
-	char buf[1];
-	unsigned int value;
+	unsigned char buf[1];
 
-	value = (unsigned int)va_arg(input, int);
-	buf[0] = value;
-	/* buf[0] = va_arg(input, int); */
+	buf[0] = (unsigned char)va_arg(input, int);
 	write(1, buf, sizeof(char));
 	return (1);
 }
