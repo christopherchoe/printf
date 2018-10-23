@@ -55,6 +55,44 @@ char *_itoa(int n)
 }
 
 /**
+  * _u_itoa - converts unsigned int to string
+  * @n: number
+  * Return: string to converted string
+  */
+char *_u_itoa(unsigned long int n)
+{
+	int num_digits, index;
+	unsigned long int n_copy;
+	char *storage;
+
+	n_copy = n;
+	num_digits = 0;
+	/* count number of digits */
+	do {
+		n_copy /= 10;
+		num_digits++;
+	} while (n_copy != 0);
+	storage = malloc(sizeof(char) * (num_digits + 1));
+	if (storage == NULL)
+		return (NULL);
+	n_copy = n;
+	/*
+	 * for (index = 0; index < num_digits; index++)
+	 * {
+	 * 	storage[index] = (n_copy / power(10, (num_digits - index - 1))) + '0';
+	 *	n_copy %= power(10, num_digits - index - 1);
+	 * }
+	 * storage[index] = '\0';
+	 */
+	storage[num_digits] = '\0';
+	for (index = (num_digits - 1); index >= 0; index--)
+	{
+		storage[index] = (n_copy % 10) + '0';
+		n_copy /= 10;
+	}
+	return (storage);
+}
+/**
   * count_digits - counts number of digits
   * @n: numeric argument to count digits of
   * Return: number of digits
@@ -78,12 +116,12 @@ int count_digits(int n)
   * @raise: power to raise base to
   * Return: value of base raised to the power of raise
   */
-unsigned int power(int base, int raise)
+unsigned long int power(unsigned long int base, unsigned long int raise)
 {
-	unsigned int result;
+	unsigned long int result;
 
 	result = 1;
-	while (raise-- > 0)
+	while (raise-- != 0)
 		result *= base;
 	return (result);
 }

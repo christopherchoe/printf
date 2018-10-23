@@ -1,8 +1,108 @@
-.TH _printf 1
+.TH printf 1 "24 October 2018" "printf man page"
 .SH NAME
-_printf \- formats and prints arguments to the standard output.
+printf \- formats and prints arguments to the standard output.
 .SH SYNOPSIS
-.B _printf(const char *format)
+.B printf
+(
+.B const char *format,
+arg1, arg2, ...)
 .SH DESCRIPTION
-.B _printf formats and prints arguments to the standard output based on the format string. 
+The printf() function formats and prints arguments to the standard output based on the format string.
+Any number of arguments can follow the format string. These arguments will replace the conversion specifiers in the printf() function.
 .SH OPTIONS
+The format string of printf() contains ordinary characters, characters to be printed to the standard output, and conversion specifications.
+A conversion specification begins with a % symbol and a conversion character. The conversion specification determines the format and conversion of the arguments that follow the format string.
+These arguments are optional, and should only be necessary when a conversion specification is present in the format string.
+.LP
+The following lists the various flags and conversion characters that are available for the printf() function. If used, they must follow the percent symbol in the order they are listed.
+.LP
+.B Flags
+.LP
+The following flags can be mixed and matched in any order.
+.LP
+.RS 3
+.B '-'
+.RS 3
+Adds left adjustment to the converted argument.
+.LP
+.RE
+.B '+'
+.RS 3
+Adds a sign to a number to be printed.
+.LP
+.RE
+.B 'space'
+.RS 3
+Given that the first printec character is not a sign, a space will be added.
+.LP
+.RE
+.B '0'
+.RS 3
+Used to pad the field width with leading zeros.
+.RE
+.RE
+
+.LP
+.B Conversion Specifiers/Characters
+.LP
+The following characters determine the conversion and format of the arguments that follow the mandatory format string of printf().
+.LP
+.RS 3
+.B c
+.RS 3
+Accepts an argument type of int. Prints a single character to the standard output.
+.LP
+.RE
+.B s
+.RS 3
+Accepts an argument type of char *. Prints the specified characters from the string until a null character is reached.
+.LP
+.RE
+.B d, i
+.RS 3
+Accepts an argument type of int. Prints the signed decimal notation to the standard output.
+.LP
+.RE
+.B b
+.RS 3
+Accepts an argument type of unsigned int. Prints the binary format of the argument to the standard output.
+.LP
+.RE
+.B u
+.RS 3
+Accepts an argument type of unsigned int. Prints the unsigned decimal notation to the standard output.
+.LP
+.RE
+.B o
+.RS 3
+Accepts an argument type of unsigned int. Prints the unsigned octal notation to the standard output.
+.LP
+.RE
+.B x, X
+.RS 3
+Accepts an argument type of unsigned int. Prints the unsigned hexadecimal notation to the standard output. 'X' indicates that capital letters will be used (A-F). 'x' indicates that lowercase letters will be used (a-f).
+.LP
+.RE
+.B S
+.RS 3
+Accepts an argument type of char *. Prints the characters(non-printable and printable) of the string to the standard output. Nonprintable characters will be printed with the ASCII code value in hexadecimal.
+.LP
+.RE
+.B p
+.RS 3
+Accepts an argument type of void *. Prints the address of a variable.
+.LP
+.RE
+.B r
+.RS 3
+Accepts an argument type of char *. Prints the characters of a string in reverse.
+.LP
+.RE
+.B R
+.RS 3
+Accepts an argument type of char *. Prints the characters of a string in rot13.
+
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Christopher Choe and Susan Su

@@ -1,7 +1,5 @@
 #include "holberton.h"
 
-int _printf(const char *format, ...);
-
 /**
   * print_format - prints the input string
   * @format: format string
@@ -9,21 +7,12 @@ int _printf(const char *format, ...);
   * @type_element: pointer to an array of structures of type Convert type
   * Return: number of printed characters (excluding null byte)
   */
-int print_format(const char *format, /*char *buf,*/ va_list input, Convert_Type *type_element)
+int print_format(const char *format, char *buf, va_list input, Convert_Type *type_element)
 {
 	const char *copy_format;
 	int type_index;
 	int num_print;
-	/* to move */
-	char *buf;
 
-	buf = malloc(sizeof(char));
-	if (buf == NULL)
-		return (0);
-	buf = buffer_init(buf);
-	if (buf == NULL)
-		return (0);
-	/* end of move */
 	if (format != NULL)
 		copy_format = format;
 	else
@@ -38,7 +27,6 @@ int print_format(const char *format, /*char *buf,*/ va_list input, Convert_Type 
 		/* check for conversion specifier */
 		if (*copy_format == '%')
 		{
-			/* iterate through the type_elements array */
 			while (type_element[type_index].format != NULL)
 			{
 				if (*(type_element[type_index].format) == *(copy_format + 1))
@@ -57,8 +45,14 @@ int print_format(const char *format, /*char *buf,*/ va_list input, Convert_Type 
 			if (*(copy_format + 1) != '%')
 				num_print += print_single_char(copy_format, buf, buffer_over(num_print));
 			num_print += print_single_char(++copy_format, buf, buffer_over(num_print));
+			if (*(copy_format + 1) != '%' && *(copy_format + 1) != '\0')
+				num_print += print_single_char(copy_format, buf, buffer_over(num_print));
+			num_print += print_single_char(++copy_format, buf, buffer_over(num_print));
 		}
-		copy_format++;
+		if (*(copy_format) != '\0')
+			copy_format++;
+		else
+			num_print = -1;
 	}
 	*(buf + buffer_over(num_print)) = '\0';
 	buffer_write(buf, buffer_over(num_print));
@@ -79,11 +73,53 @@ int _printf(const char *format, ...)
 		{"s", print_string},
 		{"d", print_decimal},
 		{"i", print_decimal},
+		{"b", print_binary},
+		{"u", print_unsigned},
+		{"o", print_octal},
+		{"x", print_hex_low},
+		{"X", print_hex_cap},
+		{"r", print_rev_str},
+		{"R", print_rot13},
+		{"p", print_address},
 		{NULL, NULL}
 	};
 	va_list input;
+	char *buf;
+	int type_index, num_printed = 0;
 
 	va_start(input, format);
-	return (print_format(format,/* buf,*/ input, type_element));
+	buf = malloc(sizeof(char));
+	if (buf == NULL)
+		return (0);
+	buf = buffer_init(buf);
+	if (buf == NULL)
+		return (0);
+	return (print_format(format, buf, input, type_element));
 }
 
+/**
+  * check_null_str - checks if any of the inputs for %s is NULL
+  * @format: format string
+  * @input: input from variable argument list
+  * Return: 1 if there is a NULL input
+  */
+int check_null_str(const char *format, va_list input)
+{
+	va_list copy_input;
+
+	va_copy(copy_input, input);
+	while (*format != '\0')
+	{
+		if (*format == '%')
+		{
+			if (*(++format) == 's')
+			{
+				if (va_arg(copy_input, char *) == NULL)
+					return (1);
+			}
+		}
+		format++;
+	}
+	va_end(copy_input);
+	return (0);
+}
