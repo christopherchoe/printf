@@ -2,15 +2,17 @@
 <h1 align ="center"> Custom printf Project </h1><br>
 <p align="center">
 	<a href="https://holbertonschool.com">
-		<img alt="holbie" title="holbie" src="https://d1vki863cvir6c.cloudfront.net/uploads/topic/image/485/holberton_school.png" width="450">
+		<img alt="holbie" title="holbie" src="https://d1vki863cvir6c.cloudfront.net/uploads/topic/image/485/holberton_school.png" width="350">
 	</a>
 </p>
-
+<p align="center">
+Made as a project for Holberton School
+</p>
 
 ## Authors
 
-* Susan Su
-* Christopher Choe
+* [Susan Su](https://twitter.com/sususayshello)
+* [Christopher Choe](https://twitter.com/chchchoe)
 
 ## Introduction
 
@@ -18,7 +20,11 @@ A custom made printf function built in C using only the write, malloc, free, va_
 
 ## Description
 
-A custom made printf function built in C.
+The custom printf function is called using \_printf() and will take in a format string, followed by an optional comma and argument list.
+
+int \_printf(const char \*format, ...);
+
+This is the prototype for our custom printf and will return the number of chararacters printed or in the case of a percentage sign at the end of a string, -1. A percentage sign and a specific conversion specifier in our format string will indicate a special print within the format string when matched with a corresponding provided argument.
 
 Functionality includes:
 
@@ -32,6 +38,24 @@ Functionality includes:
 
 * %% : will print out just one of the percentage signs
 
+* %r : with a string argument, prints the reversed string
+
+* %R : with a string argument, prints the rot13 encoded version of string
+
+* %p : with a pointer address argument, prints the address in hexadecimal with preceding 0x
+
+* %S : with a string argument, prints any unprintable characters as \x and the 2 digit hexadecimal representation of the character
+
+* %u : with an unsigned integer argument, prints the unsigned integer
+
+* %o : with an unsigned integer argument, prints the octal notation
+
+* %x : with an unsigned integer argument, prints the hexadecimal notation with lowercase letters
+
+* %X : with an unsigned integer argument, prints the hexadecimal notation with uppercase letters
+
+* %b : with an integer argument, prints the binary conversion of that integer
+
 ## Built With
 
 * [C](https://en.wikipedia.org/wiki/C_(programming_language))
@@ -44,3 +68,4 @@ Functionality includes:
 * Holberton School
 * Wendy Leung, Raven
 * The C Programming Language by Brian Kernighan
+
