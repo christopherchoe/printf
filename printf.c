@@ -10,8 +10,7 @@
 int print_format(const char *format, va_list input, Convert_Type *type_element)
 {
 	const char *copy_format;
-	int type_index;
-	int num_printed;
+	int type_index, num_printed;
 
 	if (format != NULL)
 		copy_format = format;
@@ -47,6 +46,8 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 		}
 		if (*(copy_format) != '\0')
 			copy_format++;
+		else
+			num_printed = -1;
 	}
 	va_end(input);
 	return (num_printed);
