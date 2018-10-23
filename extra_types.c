@@ -13,8 +13,14 @@ int print_address(va_list input)
 	unsigned int base = 16;
 	char *hex_values = "0123456789abcdef";
 	char *start = "0x";
+	char *invalid = "(nil)";
 
 	storage = va_arg(input, void *);
+	if (storage == NULL)
+	{
+		write(1, invalid, sizeof(char) * _strlen(invalid));
+		return (_strlen(invalid));
+	}
 	address = (unsigned long)storage;
 	/* convert pointer address to long hexadecimal format */
 	x = 0;
