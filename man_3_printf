@@ -48,7 +48,7 @@ Adds a sign to a number to be printed.
 .RE
 .B 'space'
 .RS 3
-Given that the first printec character is not a sign, a space will be added.
+Given that the first printed character is not a sign, a space will be added.
 .LP
 .RE
 .B '0'
@@ -65,7 +65,7 @@ The following characters determine the conversion and format of the arguments th
 .RS 3
 .B %c
 .RS 3
-Accepts an argument type of int. Prints a single character to the standard output.
+Accepts an argument type of int. Converts to an unsigned char type and prints a single character to the standard output.
 .LP
 .RE
 .B %s
@@ -85,17 +85,17 @@ Accepts an argument type of unsigned int. Prints the binary format of the argume
 .RE
 .B %u
 .RS 3
-Accepts an argument type of unsigned int. Prints the unsigned decimal notation to the standard output.
+Accepts an argument type of int. Prints the unsigned decimal notation to the standard output.
 .LP
 .RE
 .B %o
 .RS 3
-Accepts an argument type of unsigned int. Prints the unsigned octal notation to the standard output.
+Accepts an argument type of int. Prints the unsigned octal notation to the standard output.
 .LP
 .RE
 .B %X, %x
 .RS 3
-Accepts an argument type of unsigned int. Prints the unsigned hexadecimal notation to the standard output. 'X' indicates that capital letters will be used (A-F). 'x' indicates that lowercase letters will be used (a-f).
+Accepts an argument type of int. Prints the unsigned hexadecimal notation to the standard output. 'X' indicates that capital letters will be used (A-F). 'x' indicates that lowercase letters will be used (a-f).
 .LP
 .RE
 .B %S
