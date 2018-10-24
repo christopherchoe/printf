@@ -29,6 +29,7 @@ int print_unprint(va_list input)
 			*(buf + m++) = 'x';
 			*(buf + m++) = *hex;
 			*(buf + m++) = *(hex + 1);
+			free(hex);
 		}
 		else
 		{
@@ -40,7 +41,6 @@ int print_unprint(va_list input)
 		return (0);
 	free(str);
 	free(buf);
-	free(hex);
 	return (m);
 }
 
