@@ -64,6 +64,21 @@ This is the prototype for our custom printf and will return the number of charar
 
 * %b : with an integer argument, prints the binary conversion of that integer
 
+### Files
+
+---
+File|Description
+---|---
+extra_types.c | contains function for printing an address
+holberton.h | header file with all prototypes, libraries, and struct that used to identify correct function
+man_3_printf | man page for custom printf function
+print_basic_types.c | functions for printing chars, integers, and strings using %c, %s, %d, %i
+printf.c | file with main function for calling printf and iterating through format string to print correct output
+string_utility | file with functions used by strings.c to print different types of strings
+strings.c | contains functions for printing strings in rot13, reverse, or with unprinted characters represented as hexadecimal
+unsigned_type.c | file with functions for printing unsigned integer recieving conversions (unsigned, octal, hexadecimal upper and lower case)
+utility.c | file with helper functions for conversion functions
+
 ## Built With
 
 * [C](https://en.wikipedia.org/wiki/C_(programming_language))
