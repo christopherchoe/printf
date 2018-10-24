@@ -65,6 +65,7 @@ char *unprint_hex(int n)
 		}
 		num -= multiple * power(base, x - index - 1);
 	}
+	printf("this is the string returned: %s\n", rtn);
 	return (rtn);
 }
 
@@ -89,3 +90,4 @@ int unprint_strlen(char *str)
 
 	return (k);
 }
+

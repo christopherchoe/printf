@@ -22,9 +22,9 @@ int print_unprint(va_list input)
 		return (0);
 	for (i = m = 0; *(str + i) != '\0'; i++)
 	{
-		if ((*(str + i) > 0 && *(str + i) < 32) || *(str + i) >= 127)
+		if ((*(str + i) > 0 && *(str + i) < 32) || (unsigned char)*(str + i) >=  127)
 		{
-			hex = unprint_hex(*(str + i));
+			hex = unprint_hex((unsigned char)*(str + i));
 			*(buf + m++) = '\\';
 			*(buf + m++) = 'x';
 			*(buf + m++) = *hex;
