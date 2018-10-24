@@ -74,6 +74,12 @@ int _printf(const char *format, ...)
 		{"S", print_unprint},
 		{NULL, NULL}
 	};
+	_flag type_flags[] = {
+		{"#", print_0x},
+		{" ", print_space},
+		{"+", print_sign},
+		{NULL, NULL}
+	};
 	va_list input;
 
 	va_start(input, format);

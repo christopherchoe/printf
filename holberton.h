@@ -19,6 +19,20 @@ typedef struct print
 	int (*print_type)(va_list);
 } Convert_Type;
 
+/**
+  * struct flag - prototype
+  * @fl: string that corresponds to a flag
+  * @flag_type: pointer to function that will execute flag behavior
+  *
+  * Description: structure will define prototype of different flag
+  * functions
+  */
+typedef struct flag
+{
+	char *fl;
+	int (*flag_type)(va_list, char *);
+} _flag;
+
 /* printf functions */
 int _printf(const char *, ...);
 int print_format(const char *, va_list, Convert_Type *);
@@ -49,6 +63,11 @@ char *rot13(char *);
 
 /* printing extra types */
 int print_address(va_list);
+
+/* printing flags */
+int print_0x(va_list, char *);
+int print_space(va_list, char *);
+int print_sign(va_list, char *);
 
 /* utility functions */
 int _strlen(char *);
