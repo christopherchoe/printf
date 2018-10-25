@@ -1,4 +1,23 @@
 #include "holberton.h"
+
+/**
+  * print_hex - prints the hex values
+  * @input: input address
+  * @base: string that represents the base characters
+  * Return: number of values printed
+  */
+int print_hex(unsigned long int input, char *base)
+{
+	unsigned long int output;
+	int bytes;
+
+	bytes = 0;
+	if (input > 15)
+		bytes += print_hex(input / 16, base);
+	output = input % 16;
+	bytes += write(1, base + output, 1);
+	return (bytes);
+}
 /**
   * print_address - prints the address of the input
   * @input: input from variable argument list
@@ -7,9 +26,7 @@
 int print_address(va_list input)
 {
 	void *storage;
-	unsigned long int address, result;
-	unsigned int x, index, multiple;
-	unsigned long int base = 16;
+	unsigned long int address;
 	char *hex_values = "0123456789abcdef";
 	char *start = "0x";
 	char *invalid = "(nil)";
@@ -20,26 +37,8 @@ int print_address(va_list input)
 		write(1, invalid, sizeof(char) * 5);
 		return (5);
 	}
+
 	address = (unsigned long int)storage;
-	/* convert pointer address to long hexadecimal format */
-	x = 0;
-	do {
-		result = 15 * power(base, x);
-		x++;
-	} while (address > result);
-	result = address;
-	write(1, start, sizeof(char) * 2);
-	for (index = 0; index < x; index++)
-	{
-		for (multiple = 0; multiple <= base; multiple++)
-		{
-			if (multiple * power(base, x - index - 1) > result)
-			{
-				write(1, hex_values + (--multiple), sizeof(char));
-				break;
-			}
-		}
-		result -= multiple * power(base, x - index - 1);
-	}
-	return (x + 2);
+	write(1, start, 2);
+	return (2 + print_hex(address, hex_values));
 }
