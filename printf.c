@@ -40,12 +40,11 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 		{
 			if (*(copy_format + 1) != '%' && *(copy_format + 1) != '\0')
 				num_printed += print_single_char(copy_format);
-			num_printed += print_single_char(++copy_format);
+			if (*(copy_format + 1) != '\0')
+				num_printed += print_single_char(++copy_format);
 		}
 		if (*(copy_format) != '\0')
 			copy_format++;
-		else
-			num_printed = -1;
 	}
 	va_end(input);
 	return (num_printed);
