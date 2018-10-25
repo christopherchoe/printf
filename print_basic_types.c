@@ -76,9 +76,8 @@ int print_decimal(va_list input)
   * @str: pointer input
   * Return: 1 because we only print one single char
   */
-int print_single_char(const char *str)
+int print_single_char(char *buf, const char *str, int start)
 {
-	write(1, str, sizeof(char));
-
+	write_buf(buf, str, ++start, 1);
 	return (1);
 }

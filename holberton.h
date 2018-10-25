@@ -21,14 +21,14 @@ typedef struct print
 
 /* printf functions */
 int _printf(const char *, ...);
-int print_format(const char *, va_list, Convert_Type *);
+int format(const char *, va_list, Convert_Type *, char *);
 int check_null_str(const char *, va_list);
 
 /* printf basic types */
 int print_char(va_list);
 int print_string(va_list);
 int print_decimal(va_list);
-int print_single_char(const char *);
+int print_single_char(char *buf, const char *str, int start);
 
 /* printing advanced types */
 int print_unsigned(va_list);
@@ -56,4 +56,9 @@ char *_itoa(int);
 char *_u_itoa(unsigned long int);
 int count_digits(int);
 unsigned long int power(unsigned long int, unsigned long int);
+
+/* buffer functions */
+char *create_buf(void);
+int write_buf(char *buf, char *str, int start, int byte);
+int clear_buf(char *buf);
 #endif

@@ -1,21 +1,19 @@
 #include "holberton.h"
 
 /**
-  * print_format - prints the input string
+  * format - prints the input string
   * @format: format string
   * @input: input array from variable argument list
-  * @type_element: pointer to an array of structures of type Convert type
+  * @type: pointer to an array of structures of type Convert type
+  * @buf: buffer for storage
   * Return: number of printed characters (excluding null byte)
   */
-int print_format(const char *format, va_list input, Convert_Type *type_element)
+int format(const char *format, va_list input, Convert_Type *type, char *buf)
 {
 	const char *copy_format;
 	int type_index, num_printed = 0;
 
-	if (format != NULL)
-		copy_format = format;
-	else
-		return (-1);
+	copy_format = format;
 	/* go through the format string */
 	while (*copy_format != '\0')
 	{
@@ -23,11 +21,11 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 		/* check for conversion specifier */
 		if (*copy_format == '%')
 		{
-			while (type_element[type_index].format != NULL)
+			while (type[type_index].format != NULL)
 			{
-				if (*(type_element[type_index].format) == *(copy_format + 1))
+				if (*(type[type_index].format) == *(copy_format + 1))
 				{
-					num_printed += type_element[type_index].print_type(input);
+					num_printed += type[type_index].print_type(input);
 					copy_format++;
 					break;
 				}
@@ -36,7 +34,7 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 		}
 		else
 			num_printed += print_single_char(copy_format);
-		if (type_element[type_index].format == NULL)
+		if (type[type_index].format == NULL)
 		{
 			if (*(copy_format + 1) != '%' && *(copy_format + 1) != '\0')
 				num_printed += print_single_char(copy_format);
@@ -47,7 +45,8 @@ int print_format(const char *format, va_list input, Convert_Type *type_element)
 		else
 			num_printed = -1;
 	}
-	va_end(input);
+	write(1, buf, sizeof(char) * num_printed);
+	free(buf);
 	return (num_printed);
 }
 
@@ -75,9 +74,16 @@ int _printf(const char *format, ...)
 		{NULL, NULL}
 	};
 	va_list input;
+	char *buffer;
+	int num_printed;
 
+	if (format == NULL)
+		return (-1);
 	va_start(input, format);
-	return (print_format(format, input, type_element));
+	buf = create_buf;
+	num_printed = print_format(format, input, type_element, buf);
+	va_end(input);
+	return (num_printed);
 }
 
 /**
