@@ -11,8 +11,10 @@ Made as a project for Holberton School
 
 ## Authors
 
-* [Susan Su](https://twitter.com/sususayshello)
-* [Christopher Choe](https://twitter.com/chchchoe)
+Please contact Susan or Chris for any questions, suggestions, or opportunities you would like to discuss!
+
+* Susan Su | [LinkedIn](https://www.linkedin.com/in/susansu1/)
+* Chris Choe | [LinkedIn](https://linkedin.com/in/choechristopher)
 
 ## Table of Contents
 
